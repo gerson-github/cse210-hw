@@ -1,0 +1,4 @@
+10 inicio
+20 print "qual seu nome"
+30 input n
+40 print 'esse e o seu nome :', n
