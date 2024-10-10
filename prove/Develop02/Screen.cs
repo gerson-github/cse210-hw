@@ -25,25 +25,29 @@ public class Screen
          ");
         
         
-        // Console.WriteLine("");
-        // Console.WriteLine("Guess a number between 1-100. Type 'exit' to quit the game !!");
-        // Console.WriteLine("");
+         Console.WriteLine();
+         Console.WriteLine("Welcome to the Journal Program !");
+         Console.ForegroundColor = ConsoleColor.Yellow;
+         Console.WriteLine("Please select one of the following choices, using your Arrow Keys");
+         Console.ResetColor();
+         Console.WriteLine();
 
     }
-    public void ShowMenu()
+    public int ShowMenu()
     {
 
-        string[] menu = {"Write","Display","Load","Save","Quit"};
+        string[] menu = {"Write","Display","Load","Save", "Save Json","Quit"};
         int selectedMenu = 0;
 
         ConsoleKey keyPressed;
         do
         {
             ShowHeader();
-            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine("-------------------------------------------------------------------");
             DisplayMenu(menu, selectedMenu);
-            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine("-------------------------------------------------------------------");
 
+            //journal.DisplayAll();
             keyPressed = Console.ReadKey().Key;
 
             //check arrow key
@@ -58,8 +62,9 @@ public class Screen
             }
 
 
-        } while (keyPressed != ConsoleKey.Enter || selectedMenu != menu.Length -1);
+        } while (keyPressed != ConsoleKey.Enter);
 
+        return selectedMenu + 1;
 
     }
 
