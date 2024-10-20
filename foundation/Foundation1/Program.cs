@@ -17,10 +17,11 @@ class Program
 
         Video video2 = new Video("Video Title 2", "Author 2", 150);
         video2.AddComment(new Comment("User3", "Interesting content"));
+        video2.AddComment(new Comment("User4", "Not good"));
         videos.Add(video2);
 
-        Video video3 = new Video("Video Title 2", "Author 2", 100);
-        video2.AddComment(new Comment("User4", "Not good"));
+        Video video3 = new Video("Video Title 3", "Author 3", 100);
+        video3.AddComment(new Comment("User4", "Very good"));
         videos.Add(video3);
 
 
