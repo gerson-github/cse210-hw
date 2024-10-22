@@ -29,6 +29,8 @@ class Program
         order2.AddProduct(product3);
         order2.AddProduct(product4);
 
+        Console.Clear();
+
         // Display results 
         Console.WriteLine("Order 1:");
         Console.WriteLine("Packing Label:\n" + order1.GetPackingLabel());
