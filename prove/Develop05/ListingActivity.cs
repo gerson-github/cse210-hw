@@ -1,47 +1,41 @@
-public class ListingActivity : Activity
+class ListingActivity : Activity
 {
-    private int _count;
     private List<string> _prompts = new List<string>
     {
-        "Name something you're grateful for:",
-        "List three things you love about yourself:",
-        "What are some of your recent achievements?"
+        "Who are people that you appreciate?",
+        "What are personal strengths of yours?",
+        "Who are people that you have helped this week?",
+        "When have you felt the Holy Ghost this month?",
+        "Who are some of your personal heroes?"
     };
+
+    public ListingActivity()
+    {
+        _name = "Listing Activity";
+        _description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
+    }
 
     public void Run()
     {
-        _name = "Listing Activity";
-        _description = "An activity to list things you value and appreciate.";
         DisplayStartingMessage();
 
-        string prompt = GetRandomPrompt();
-        Console.WriteLine(prompt);
-
-        List<string> responses = GetListFromUser();
-        _count = responses.Count;
-        
-        Console.WriteLine($"You listed {_count} items.");
-        DisplayEndingMessage();
-    }
-
-    private string GetRandomPrompt()
-    {
         Random random = new Random();
-        int index = random.Next(_prompts.Count);
-        return _prompts[index];
-    }
+        string prompt = _prompts[random.Next(_prompts.Count)];
+        Console.WriteLine(prompt);
+        ShowCountDown(5);
+        Console.Clear();
 
-    private List<string> GetListFromUser()
-    {
-        List<string> list = new List<string>();
-        string input;
-        
-        Console.WriteLine("Enter your responses (type 'done' when finished):");
-        while ((input = Console.ReadLine())?.ToLower() != "done")
+        List<string> items = new List<string>();
+        DateTime endTime = DateTime.Now.AddSeconds(_duration);
+        while (DateTime.Now < endTime)
         {
-            list.Add(input);
+            
+            Console.Write("List an item: ");
+            string item = Console.ReadLine();
+            items.Add(item);
         }
-        
-        return list;
+
+        Console.WriteLine($"You listed {items.Count} items.");
+        DisplayEndingMessage();
     }
 }
